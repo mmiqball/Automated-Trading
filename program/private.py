@@ -1,4 +1,5 @@
 import time
+import json
 from datetime import datetime, timedelta
 from pprint import pprint
 from utils import format_number
@@ -67,4 +68,7 @@ def abort_all(client):
                 True
             )
             close_orders.append(order)
+    bot_agents = []
+    with open("bot_agents.json", "w") as f:
+        json.dump(bot_agents, f)
     return close_orders

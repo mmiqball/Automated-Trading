@@ -2,7 +2,7 @@ from dydx3.constants import API_HOST_GOERLI, API_HOST_MAINNET
 from decouple import config
 
 MODE = "TEST"
-ABORT_ALL = True
+ABORT_ALL = False
 FIND_COINTEGRATED = True
 PLACE_TRADES = True
 FIND_EXITS = True
