@@ -2,6 +2,7 @@ import time
 from private import market_order, check_status
 from datetime import datetime, timedelta
 from pprint import pprint
+from send_updates import send_update
 
 class BotAgent:
     """
@@ -134,12 +135,14 @@ class BotAgent:
                 if order_status_close_order != "FILLED":
                     print("Big error, abort everything")
                     print(order_status_close_order)
+                    send_message("Failed to fill order. Please check.")
                     exit(1)
             except Exception as e:
                 self.order_dict["pair_status"] = "ERROR"
                 self.order_dict["comments"] = f"Close Market 1 {self.market_1}:, {e}"
                 print("Big error, abort everything")
                 print(order_status_close_order)
+                send_message("Please check bot. Failed to execute properly")
                 exit(1)
         else:
             self.order_dict["pair_status"] = "LIVE"
